@@ -213,10 +213,9 @@ async fn table(
             pager
                 .lock()
                 .await
-                .on_finished_callbacks
-                .push(Box::new(move || {
+                .add_exit_callback(move || {
                     finished_within_callback.store(true, Ordering::Relaxed);
-                }));
+                });
         }
         while !finished.clone().load(Ordering::Relaxed) {
             let mut new_input: VecDeque<Value> = VecDeque::new();
