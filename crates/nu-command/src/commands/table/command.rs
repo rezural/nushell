@@ -385,6 +385,10 @@ mod input_handling {
                     modifiers: KeyModifiers::NONE,
                 })
                 | Event::Key(KeyEvent {
+                    code: KeyCode::Char('Q'),
+                    modifiers: KeyModifiers::CONTROL,
+                })
+                | Event::Key(KeyEvent {
                     code: KeyCode::Char('c'),
                     modifiers: KeyModifiers::CONTROL,
                 }) => Some(InputEvent::Exit),
